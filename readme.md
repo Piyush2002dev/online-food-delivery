@@ -21,7 +21,7 @@ This service handles payment-related functionality within the Online Food Delive
 |----------------|--------------------------|
 | Language       | Java 17+                |
 | Framework      | Spring Boot 3.x         |
-| Database       | MySQL/PostgreSQL        |
+| Database       | MySQL                   |
 | API Style      | REST (Spring Web)       |
 | ORM            | Spring Data JPA         |
 | Discovery      | Eureka (optional)       |
