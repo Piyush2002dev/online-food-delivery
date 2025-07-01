@@ -1,6 +1,6 @@
 # 🍔 Online Food Delivery System
 
-An end-to-end backend system designed to manage a food ordering platform where customers can browse menus, place orders, make payments, and track deliveries. The project supports both **Spring Boot (Java)** and **ASP.NET Core (.NET)** backends with a **React/Angular frontend**, and follows a modular, REST API-based microservice architecture.
+An end-to-end backend system designed to manage a food ordering platform where customers can browse menus, place orders, make payments, and track deliveries. The project supports both **Spring Boot (Java)** backends with a **Angular frontend**, and follows a modular, REST API-based microservice architecture.
 
 ---
 
@@ -17,10 +17,10 @@ An end-to-end backend system designed to manage a food ordering platform where c
 ## 🧱 Tech Stack
 
 | Layer         | Technology                          |
-|---------------|--------------------------------------|
-| Frontend      | Angular / React                     |
-| Backend       | Spring Boot (Java) or ASP.NET Core  |
-| API Style     | RESTful APIs                         |
+|---------------|-------------------------------------|
+| Frontend      | Angular                    |
+| Backend       | Spring Boot (Java)                  |
+| API Style     | RESTful APIs                        |
 | Database      | MySQL / PostgreSQL / SQL Server     |
 | Architecture  | Microservice-ready, modular design  |
 
@@ -80,10 +80,3 @@ Processes payments and confirms transactions.
 | Payment      | PaymentID   | OrderID                          |
 
 ---
-
-## 🚀 How to Run (Local)
-
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/your-org/food-delivery-system.git
-   cd food-delivery-system
