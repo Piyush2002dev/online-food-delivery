@@ -1,34 +1,59 @@
-# 💳 Payment Microservice – Food Delivery Platform
+# 💳 Payment Service – Online Food Delivery System
 
-This microservice handles all payment-related operations within the Food Delivery ecosystem. It supports creating, retrieving, updating, filtering, and deleting payments, with support for multiple payment methods and statuses.
-
----
-
-## 🚀 Features
-
-- Create a new payment for a food order
-- Retrieve payments by ID, status, or order
-- Update payment status (e.g. mark as successful or failed)
-- Retry failed payments
-- Delete payments
-- Enum-based support for `PaymentStatus` and `PaymentMethod`
-- RESTful APIs with Spring Boot
-- Microservice-ready with Eureka and modular database config
+This service handles payment-related functionality within the Online Food Delivery System. It supports multiple payment methods, processes transactions, maintains payment history, and integrates with third-party payment gateways. Designed with modularity and RESTful principles, it operates as an independent microservice.
 
 ---
 
-## 🧱 Tech Stack
+## 🔑 Key Features
 
-| Layer       | Technology                  |
-|-------------|-----------------------------|
-| Framework   | Spring Boot 3.x             |
-| Language    | Java 17+                    |
-| Build Tool  | Maven                       |
-| Database    | MySQL / PostgreSQL          |
-| Registry    | Eureka (Spring Cloud)       |
-| API Style   | REST                        |
+- Process customer payments for food orders
+- Support for multiple payment methods (e.g., Card, Wallet, UPI)
+- REST APIs for creating, retrieving, and updating payment status
+- Integration-ready for third-party payment gateways
+- Enum-driven status and method handling
+- Built using Spring Boot and JPA with relational DB support
 
 ---
 
-## 📦 Package Structure
+## 📦 Tech Stack
 
+| Component      | Technology              |
+|----------------|--------------------------|
+| Language       | Java 17+                |
+| Framework      | Spring Boot 3.x         |
+| Database       | MySQL/PostgreSQL        |
+| API Style      | REST (Spring Web)       |
+| ORM            | Spring Data JPA         |
+| Discovery      | Eureka (optional)       |
+| Build Tool     | Maven                   |
+
+---
+
+## 🧩 Module Overview
+
+### 1. Functionalities
+
+- Create and persist payment transactions
+- Retrieve payments by ID or order ID
+- Update and retry payment status
+- Filter payments by status
+- Delete payments (admin use)
+
+### 2. Entities
+
+#### `Payment`
+- `paymentId`: Unique identifier
+- `orderId`: Associated order
+- `amount`: Transaction amount
+- `method`: Payment method enum
+- `status`: Payment status enum
+
+#### Enums
+```java
+public enum PaymentMethod {
+    CARD, WALLET, UPI, NETBANKING
+}
+
+public enum PaymentStatus {
+    PENDING, SUCCESSFUL, FAILED
+}
