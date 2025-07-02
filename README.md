@@ -49,7 +49,7 @@ Welcome to the **Menu Service** of the **Online Food Delivery Platform** – a m
 ```json
 {
   "name": "Classic Cheeseburger",
-  "description": "Juicy grilled beef patty with melted cheddar cheese",
+  "description": "Very delicious and filled with creamy cheese and vegetables.",
   "price": 8.99,
   "restaurantId": 101
 }
