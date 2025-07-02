@@ -1,6 +1,7 @@
 package com.fooddelivery.controller;
 
 import com.fooddelivery.dto.PaymentDto;
+import com.fooddelivery.entity.PaymentStatus;
 import com.fooddelivery.service.PaymentService;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,17 @@ public class PaymentController {
     @GetMapping("/by-order/{orderId}")
     public ResponseEntity<List<PaymentDto>> getByOrderId(@PathVariable Long orderId) {
         return ResponseEntity.ok(service.getPaymentsByOrderId(orderId));
+    }
+    
+    @GetMapping("/by-status/{status}")
+    public ResponseEntity<List<PaymentDto>> getByStatus(@PathVariable PaymentStatus status) {
+        return ResponseEntity.ok(service.getPaymentsByStatus(status));
+    }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<PaymentDto> update(@PathVariable Long id, @RequestBody PaymentDto dto) {
+        PaymentDto updated = service.updatePayment(id, dto);
+        return ResponseEntity.ok(updated);
     }
 
     @DeleteMapping("/{id}")
