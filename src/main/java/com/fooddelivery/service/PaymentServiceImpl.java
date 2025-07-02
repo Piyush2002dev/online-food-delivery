@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fooddelivery.dto.PaymentDto;
 import com.fooddelivery.entity.Payment;
+import com.fooddelivery.entity.PaymentStatus;
 import com.fooddelivery.exception.ResourceNotFoundException;
 import com.fooddelivery.repository.PaymentRepository;
 
@@ -95,5 +96,44 @@ public class PaymentServiceImpl implements PaymentService {
         }
         repository.deleteById(id);
     }
+    
+    @Override
+    @Transactional
+    public PaymentDto updatePayment(Long id, PaymentDto dto) {
+        Payment existing = repository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Payment not found with id: " + id));
+
+        existing.setAmount(dto.getAmount());
+        existing.setMethod(dto.getMethod());
+        existing.setStatus(dto.getStatus());
+        existing.setOrderId(dto.getOrderId());
+
+        Payment updated = repository.save(existing);
+
+        return new PaymentDto(
+            updated.getId(),
+            updated.getAmount(),
+            updated.getMethod(),
+            updated.getStatus(),
+            updated.getOrderId()
+        );
+    }
+    
+    @Override
+    public List<PaymentDto> getPaymentsByStatus(PaymentStatus status) {
+        List<Payment> payments = repository.findByStatus(status);
+        List<PaymentDto> dtos = new ArrayList<>();
+        for (Payment p : payments) {
+            dtos.add(new PaymentDto(
+                p.getId(),
+                p.getAmount(),
+                p.getMethod(),
+                p.getStatus(),
+                p.getOrderId()
+            ));
+        }
+        return dtos;
+    }
+
 
 }
